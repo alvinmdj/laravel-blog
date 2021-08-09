@@ -10,8 +10,8 @@ class UserController extends Controller
     public function detail(User $author)
     {
         return view('posts', [
-            'title' => 'Posts by ' . $author->name,
-            'posts' => $author->posts,
+            'title' => "Posts by $author->name",
+            'posts' => $author->posts->load('category', 'author'),  // $author->posts - 'posts' is a method in User Model which is called just like an attribute, to show all post by user
         ]);
     }
 }

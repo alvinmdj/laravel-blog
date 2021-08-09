@@ -17,10 +17,9 @@ class CategoryController extends Controller
 
     public function detail(Category $category)
     {
-        return view('category', [
-            'title' => $category->name,
-            'posts' => $category->posts,
-            'category' => $category->name,
+        return view('posts', [
+            'title' => "Post by Category - $category->name",
+            'posts' => $category->posts->load('category', 'author'),    // $category->posts - 'posts' is a method in Category Model which is called just like an attribute, to show all post by category
         ]);
     }
 }
