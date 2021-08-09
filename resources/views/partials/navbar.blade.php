@@ -13,7 +13,10 @@
           <a class="nav-link {{ ($title === "About") ? 'active' : '' }}" href="{{ route('about') }}">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ ($title === "Posts") ? 'active' : '' }}" href="{{ route('posts') }}">Blog</a>
+          <a class="nav-link {{ ($title === "All Post") ? 'active' : '' }}" href="{{ route('posts') }}">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ ($title === "Categories") ? 'active' : '' }}" href="{{ route('categories') }}">Category</a>
         </li>
       </ul>
     </div>

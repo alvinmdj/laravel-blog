@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\User;
-use App\Models\Category;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,24 +34,8 @@ Route::get('/about', function () {
 Route::get('/posts', [PostController::class, 'show'])->name('posts');
 Route::get('/posts/{post:slug}', [PostController::class, 'detail']);
 
-Route::get('/categories', function () {
-    return view('categories', [
-        'title' => 'Post Categories',
-        'categories' => Category::all(),
-    ]);
-});
+Route::get('/categories', [CategoryController::class, 'show'])->name('categories');
 
-Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('category', [
-        'title' => $category->name,
-        'posts' => $category->posts,
-        'category' => $category->name,
-    ]);
-});
+Route::get('/categories/{category:slug}', [CategoryController::class, 'detail']);
 
-Route::get('/authors/{author:username}', function (User $author) {
-    return view('posts', [
-        'title' => 'Posts by ' . $author->name,
-        'posts' => $author->posts,
-    ]);
-});
+Route::get('/authors/{author:username}', [UserController::class, 'detail']);
