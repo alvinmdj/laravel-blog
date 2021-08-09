@@ -9,7 +9,7 @@
         <a href="/posts/{{ $post->slug }}" class="text-decoration-none">{{ $post->title }}</a>
       </h2>
       
-      <p>Written by <a href="#" class="text-decoration-none">{{ $post->user->name }}</a></p>
+      <p>Written by <a href="/authors/{{ $post->author->username }}" class="text-decoration-none">{{ $post->author->name }}</a></p>
 
       <p>{{ $post->excerpt }}</p>
     </article>

@@ -10,8 +10,8 @@ class PostController extends Controller
     public function show()
     {
         return view('posts', [
-            'title' => 'Posts',
-            'posts' => Post::all(),
+            'title' => 'All Post',
+            'posts' => Post::latest()->get(),
         ]);
     }
 
