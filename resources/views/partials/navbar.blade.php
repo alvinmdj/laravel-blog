@@ -7,16 +7,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link {{ ($title === "Home") ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
+          <a class="nav-link {{ ($active === "home") ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ ($title === "About") ? 'active' : '' }}" href="{{ route('about') }}">About</a>
+          <a class="nav-link {{ ($active === "about") ? 'active' : '' }}" href="{{ route('about') }}">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ ($title === "All Post") ? 'active' : '' }}" href="{{ route('posts') }}">Blog</a>
+          <a class="nav-link {{ ($active === "all-post") ? 'active' : '' }}" href="{{ route('posts') }}">Blog</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ ($title === "Categories") ? 'active' : '' }}" href="{{ route('categories') }}">Category</a>
+          <a class="nav-link {{ ($active === "categories") ? 'active' : '' }}" href="{{ route('categories') }}">Category</a>
         </li>
       </ul>
     </div>

@@ -11,6 +11,7 @@ class UserController extends Controller
     {
         return view('posts', [
             'title' => "Posts by $author->name",
+            'active' => 'authors',
             'posts' => $author->posts->load('category', 'author'),  // $author->posts - 'posts' is a method in User Model which is called just like an attribute, to show all post by user
         ]);
     }
