@@ -15,13 +15,4 @@ class CategoryController extends Controller
             'categories' => Category::all(),
         ]);
     }
-
-    public function detail(Category $category)
-    {
-        return view('posts', [
-            'title' => "Post by Category - $category->name",
-            'active' => 'categories',
-            'posts' => $category->posts->load('category', 'author'),    // $category->posts - 'posts' is a method in Category Model which is called just like an attribute, to show all post by category
-        ]);
-    }
 }

@@ -1,3 +1,22 @@
-body {
-  background-color: salmon;
+.category-tag {
+  background-color: rgba(30, 130, 76, 0.8);
+}
+
+.category-tag:hover {
+  background-color: rgba(30, 130, 76, 1);
+}
+
+.page-item.active .page-link {
+  background-color: #198754;
+  border-color: #198754;
+}
+
+.page-link {
+  color: #198754;
+}
+
+@media only screen and (max-width: 576px) {
+  .text-xs {
+    font-size: 12px !important;
+  }
 }

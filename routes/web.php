@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,9 +33,7 @@ Route::get('/about', function () {
 })->name('about');
 
 Route::get('/posts', [PostController::class, 'show'])->name('posts');
+
 Route::get('/posts/{post:slug}', [PostController::class, 'detail']);
 
 Route::get('/categories', [CategoryController::class, 'show'])->name('categories');
-Route::get('/categories/{category:slug}', [CategoryController::class, 'detail']);
-
-Route::get('/authors/{author:username}', [UserController::class, 'detail']);
