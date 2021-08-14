@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +39,7 @@ Route::get('/posts', [PostController::class, 'show'])->name('posts');
 Route::get('/posts/{post:slug}', [PostController::class, 'detail']);
 
 Route::get('/categories', [CategoryController::class, 'show'])->name('categories');
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+
+Route::get('/register', [RegisterController::class, 'index'])->name('register');

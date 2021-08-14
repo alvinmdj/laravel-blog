@@ -1,3 +1,8 @@
+.navbar {
+  /* background-color: rgb(194, 74, 74); */
+  background-color: rgb(133, 46, 46);
+}
+
 .category-tag {
   background-color: rgba(30, 130, 76, 0.8);
 }
@@ -13,6 +18,27 @@
 
 .page-link {
   color: #198754;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-registration input {
+  border-radius: 0;
+  margin-bottom: -1px;
 }
 
 @media only screen and (max-width: 576px) {
