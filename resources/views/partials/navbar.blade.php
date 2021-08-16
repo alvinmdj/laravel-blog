@@ -24,13 +24,34 @@
           <a class="nav-link {{ ($active === "categories") ? 'active' : '' }}" href="{{ route('categories') }}"><i class="bi bi-tags"></i> Category</a>
         </li>
       </ul>
+
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link {{ ($active === "register") ? 'active' : '' }}" href="{{ route('register') }}"><i class="bi bi-box-arrow-in-left"></i> Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {{ ($active === "login") ? 'active' : '' }}" href="{{ route('login') }}"><i class="bi bi-box-arrow-in-right"></i> Log In</a>
-        </li>
+        @auth
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Hi, {{ auth()->user()->username }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ route('dashboard.index') }}"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <form action="/logout" method="POST">
+                  @csrf
+                  <button type="submit" class="dropdown-item">
+                    <i class="bi bi-box-arrow-in-left"></i> Log Out
+                  </button>
+                </form>
+              </li>
+            </ul>
+          </li>
+        @else
+          <li class="nav-item">
+            <a class="nav-link {{ ($active === "register") ? 'active' : '' }}" href="{{ route('register') }}"><i class="bi bi-card-heading"></i> Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ ($active === "login") ? 'active' : '' }}" href="{{ route('login') }}"><i class="bi bi-box-arrow-in-right"></i> Log In</a>
+          </li>
+        @endauth
       </ul>
     </div>
   </div>
