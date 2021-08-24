@@ -2,11 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\DashboardPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,14 +21,12 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::get('/', function () {
     return view('home', [
         'title' => 'Home',
-        'active' => 'home',
     ]);
 })->name('home');
 
 Route::get('/about', function () {
     return view('about', [
         'title' => 'About',
-        'active' => 'about',
         'name' => 'Alvin Martin',
         'email' => 'alvin.martin@admin.com',
         'image' => 'ac2.jpg'
@@ -49,7 +46,11 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/dashboard', function () {
+        return view('dashboard.index');
+    })->name('dashboard.index');
+
+    Route::resource('/dashboard/posts', DashboardPostController::class);
     
     Route::post('/logout', [LoginController::class, 'logout']);
 });

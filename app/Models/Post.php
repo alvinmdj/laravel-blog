@@ -24,6 +24,17 @@ class Post extends Model
      * @var array
      */
     protected $with = ['author', 'category'];
+
+    /**
+     * Get the route key for the model.
+     * Change default key from 'id' to 'slug'.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
     
     /**
      * Eloquent 1 to 1 relationship

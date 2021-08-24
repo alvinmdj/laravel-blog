@@ -11,7 +11,6 @@ class LoginController extends Controller
     {
         return view('login.index', [
             'title' => 'Log In',
-            'active' => 'login',
         ]);
     }
 

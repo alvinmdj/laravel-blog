@@ -12,16 +12,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link {{ ($active === "home") ? 'active' : '' }}" href="{{ route('home') }}"><i class="bi bi-house"></i> Home</a>
+          <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ route('home') }}"><i class="bi bi-house"></i> Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ ($active === "about") ? 'active' : '' }}" href="{{ route('about') }}"><i class="bi bi-info-square"></i> About</a>
+          <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="{{ route('about') }}"><i class="bi bi-info-square"></i> About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ ($active === "all-post") ? 'active' : '' }}" href="{{ route('posts') }}"><i class="bi bi-signpost"></i> Blog</a>
+          <a class="nav-link {{ Request::segment(1) === 'posts' ? 'active' : '' }}" href="{{ route('posts') }}"><i class="bi bi-signpost"></i> Blog</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ ($active === "categories") ? 'active' : '' }}" href="{{ route('categories') }}"><i class="bi bi-tags"></i> Category</a>
+          <a class="nav-link {{ Request::is('categories') ? 'active' : '' }}" href="{{ route('categories') }}"><i class="bi bi-tags"></i> Category</a>
         </li>
       </ul>
 
@@ -46,10 +46,10 @@
           </li>
         @else
           <li class="nav-item">
-            <a class="nav-link {{ ($active === "register") ? 'active' : '' }}" href="{{ route('register') }}"><i class="bi bi-card-heading"></i> Register</a>
+            <a class="nav-link {{ Request::is('register') ? 'active' : '' }}" href="{{ route('register') }}"><i class="bi bi-card-heading"></i> Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ ($active === "login") ? 'active' : '' }}" href="{{ route('login') }}"><i class="bi bi-box-arrow-in-right"></i> Log In</a>
+            <a class="nav-link {{ Request::is('login') ? 'active' : '' }}" href="{{ route('login') }}"><i class="bi bi-box-arrow-in-right"></i> Log In</a>
           </li>
         @endauth
       </ul>
