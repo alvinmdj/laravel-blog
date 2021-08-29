@@ -50,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard.index');
     })->name('dashboard.index');
 
+    Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
     Route::resource('/dashboard/posts', DashboardPostController::class);
     
     Route::post('/logout', [LoginController::class, 'logout']);
