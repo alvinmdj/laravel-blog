@@ -6,29 +6,52 @@
   </div>
 
   <div>
-    <form method="POST" action="/dashboard/posts">
+    <form method="POST" action="/dashboard/posts" class="mb-5">
       @csrf
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title" name="title">
+        <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') }}" required autofocus>
+        @error('title')
+          <div class="invalid-feedback">
+            {{ $message }}
+          </div>
+        @enderror
       </div>
       <div class="mb-3">
         <label for="slug" class="form-label">Slug</label>
-        <input type="text" class="form-control" id="slug" name="slug" disabled readonly>
+        <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug') }}" required>
+        <div class="form-text">This field is auto-generated, but of course you can customize it :)</div>
+        @error('slug')
+          <div class="invalid-feedback">
+            {{ $message }}
+          </div>
+        @enderror
       </div>
       <div class="mb-3">
         <label for="category" class="form-label">Category</label>
-        <select class="form-select" name="category_id">
+        <select class="form-select @error('category_id') is-invalid @enderror" name="category_id">
           <option selected disabled>Open this select menu</option>
           @foreach ($categories as $category)
-            <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @if (old('category_id') == $category->id)
+              <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+            @else
+              <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endif
           @endforeach
         </select>
+        @error('category_id')
+          <div class="invalid-feedback">
+            {{ $message }}
+          </div>
+        @enderror
       </div>
       <div class="mb-3">
         <label for="body" class="form-label">Body</label>
-        <input id="body" type="hidden" name="body">
+        <input id="body" type="hidden" name="body" value="{{ old('body') }}">
         <trix-editor input="body"></trix-editor>
+        @error('body')
+          <small class="text-danger">{{ $message }}</small>
+        @enderror
       </div>
       <button type="submit" class="btn btn-primary">Create Post</button>
     </form>

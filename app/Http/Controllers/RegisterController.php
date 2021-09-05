@@ -9,13 +9,6 @@ use Illuminate\Validation\Rules\Password;
 
 class RegisterController extends Controller
 {
-    public function rule()
-    {
-        return [
-            ''
-        ];
-    }
-
     public function index()
     {
         return view('register.index', [

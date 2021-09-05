@@ -5,6 +5,12 @@
     <h1 class="h2">My Posts</h1>
   </div>
 
+  @if (session()->has('success'))
+    <div class="alert alert-success" role="alert">
+      {{ session('success') }}
+    </div>
+  @endif
+
   <div class="table-responsive">
     <a href="/dashboard/posts/create" class="btn btn-primary btn-sm mb-2">Create new post</a>
     <table class="table table-striped table-sm">
@@ -17,18 +23,24 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($posts as $post)
+        @if (count($posts) !== 0)
+          @foreach ($posts as $post)
+            <tr>
+              <td>{{ $loop->iteration }}</td>
+              <td>{{ $post->title }}</td>
+              <td>{{ $post->category->name }}</td>
+              <td>
+                <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info"><span data-feather="eye"></span></a>
+                <a href="" class="badge bg-warning"><span data-feather="edit"></span></a>
+                <a href="" class="badge bg-danger"><span data-feather="trash"></span></a>
+              </td>
+            </tr>
+          @endforeach
+        @else
           <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>{{ $post->title }}</td>
-            <td>{{ $post->category->name }}</td>
-            <td>
-              <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info"><span data-feather="eye"></span></a>
-              <a href="" class="badge bg-warning"><span data-feather="edit"></span></a>
-              <a href="" class="badge bg-danger"><span data-feather="trash"></span></a>
-            </td>
+            <td colspan="4" class="text-center">No post found.</td>
           </tr>
-        @endforeach
+        @endif
       </tbody>
     </table>
   </div>
