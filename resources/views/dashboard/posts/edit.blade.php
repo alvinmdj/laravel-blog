@@ -2,25 +2,25 @@
 
 @section('content')
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Create New Post</h1>
+    <h1 class="h2">Edit Post</h1>
   </div>
 
   <div>
-    <form method="POST" action="/dashboard/posts" enctype="multipart/form-data" class="mb-5">
+    <form method="POST" action="/dashboard/posts/{{ $post->slug }}" class="mb-5">
+      @method('put')
       @csrf
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') }}" required autofocus>
+        <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title', $post->title) }}" required autofocus>
         @error('title')
           <div class="invalid-feedback">
             {{ $message }}
           </div>
         @enderror
       </div>
-
       <div class="mb-3">
         <label for="slug" class="form-label">Slug</label>
-        <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug') }}" required>
+        <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug', $post->slug) }}" required>
         <div class="form-text">This field is auto-generated, but of course you can customize it :)</div>
         @error('slug')
           <div class="invalid-feedback">
@@ -28,13 +28,12 @@
           </div>
         @enderror
       </div>
-
       <div class="mb-3">
         <label for="category" class="form-label">Category</label>
         <select class="form-select @error('category_id') is-invalid @enderror" name="category_id">
           <option selected disabled>Open this select menu</option>
           @foreach ($categories as $category)
-            @if (old('category_id') == $category->id)
+            @if (old('category_id', $post->category_id) == $category->id)
               <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
             @else
               <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -47,27 +46,15 @@
           </div>
         @enderror
       </div>
-
-      <div class="mb-3">
-        <label for="image" class="form-label">Post Image <small class="form-text">(optional)</small></label>
-        <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
-        @error('image')
-          <div class="invalid-feedback">
-            {{ $message }}
-          </div>
-        @enderror
-      </div>
-
       <div class="mb-3">
         <label for="body" class="form-label">Body</label>
-        <input id="body" type="hidden" name="body" value="{{ old('body') }}">
+        <input id="body" type="hidden" name="body" value="{{ old('body', $post->body) }}">
         <trix-editor input="body"></trix-editor>
         @error('body')
           <small class="text-danger">{{ $message }}</small>
         @enderror
       </div>
-
-      <button type="submit" class="btn btn-primary">Create Post</button>
+      <button type="submit" class="btn btn-primary">Update Post</button>
     </form>
   </div>
 
