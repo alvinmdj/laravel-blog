@@ -2,7 +2,7 @@
   <div class="container">
     <a class="navbar-brand mb-0 h1" href="/">
       <div class="">
-        <img src="img/logo/laravel.svg" alt="" width="50">
+        <img src="/img/logo/laravel.svg" alt="" width="50">
         Laravel Blog
       </div>
     </a>
