@@ -45,9 +45,9 @@
             </ul>
           </li>
         @else
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link {{ Request::is('register') ? 'active' : '' }}" href="{{ route('register') }}"><i class="bi bi-card-heading"></i> Register</a>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a class="nav-link {{ Request::is('login') ? 'active' : '' }}" href="{{ route('login') }}"><i class="bi bi-box-arrow-in-right"></i> Log In</a>
           </li>
