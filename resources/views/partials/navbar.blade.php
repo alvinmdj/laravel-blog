@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark">
   <div class="container">
-    <a class="navbar-brand mb-0 h1" href="/">
-      <div class="">
+    <a class="navbar-brand mb-0 pe-3 h1" href="/">
+      <div>
         <img src="/img/logo/laravel.svg" alt="" width="50">
         Laravel Blog
       </div>
@@ -11,16 +11,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
-        <li class="nav-item">
+        <li class="nav-item pe-3">
           <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ route('home') }}"><i class="bi bi-house"></i> Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="{{ route('about') }}"><i class="bi bi-info-square"></i> About</a>
+        <li class="nav-item pe-3">
+          <a class="nav-link {{ Request::segment(1) === 'posts' ? 'active' : '' }}" href="{{ route('posts') }}"><i class="bi bi-signpost"></i> Posts</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link {{ Request::segment(1) === 'posts' ? 'active' : '' }}" href="{{ route('posts') }}"><i class="bi bi-signpost"></i> Blog</a>
-        </li>
-        <li class="nav-item">
+        <li class="nav-item pe-3">
           <a class="nav-link {{ Request::is('categories') ? 'active' : '' }}" href="{{ route('categories') }}"><i class="bi bi-tags"></i> Category</a>
         </li>
       </ul>

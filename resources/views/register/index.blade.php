@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row justify-content-center">
-  <div class="col-md-8 col-lg-5">
+  <div class="col-md-8 col-lg-5 my-4">
     <main class="form-registration">
       <div class="card">
         <div class="card-body">
@@ -51,7 +51,7 @@
               <input type="password" name="password_confirmation" id="password_confirmation" class="form-control rounded-bottom" placeholder="Confirm password" required>
               <label for="password_confirmation">Confirm password</label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Register</button>
+            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Create Account (Free)</button>
           </form>
           <small class="mt-2 d-block text-center">Already registered? <a href="{{ route('login') }}">Login now!</a></small>
         </div>

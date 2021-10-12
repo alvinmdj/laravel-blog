@@ -25,15 +25,6 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('/about', function () {
-    return view('about', [
-        'title' => 'About',
-        'name' => 'Alvin Martin',
-        'email' => 'alvin.martin@admin.com',
-        'image' => 'ac2.jpg'
-    ]);
-})->name('about');
-
 Route::get('/posts', [PostController::class, 'show'])->name('posts');
 Route::get('/posts/{post:slug}', [PostController::class, 'detail']);
 Route::get('/categories', [CategoryController::class, 'show'])->name('categories');

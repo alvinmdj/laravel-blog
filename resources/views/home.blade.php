@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <h1>Home Page</h1>
+  <div class="pb-4">
+    <img src="{{ asset('img/laravel-banner.jpg') }}" class="img-thumbnail img-fluid">
+  </div>
 @endsection
