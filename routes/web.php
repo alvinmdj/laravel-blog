@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\DashboardPostController;
 
 /*
@@ -54,4 +55,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/dashboard/posts', DashboardPostController::class);
     
     Route::post('/logout', [LoginController::class, 'logout']);
+});
+
+Route::middleware(['admin'])->group(function () {
+    Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show');
 });
