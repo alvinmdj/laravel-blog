@@ -58,5 +58,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['admin'])->group(function () {
+    Route::get('/dashboard/categories/checkSlug', [AdminCategoryController::class, 'checkSlug']);
     Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show');
 });
